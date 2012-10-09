@@ -1,0 +1,73 @@
+# Unit-test Makefile
+#--------------------------------------------------------- Definitions
+TGT_NAME0    =    stuff
+TGT_NAME1    =    link
+TGT_SRC     =    ../stuff.c
+
+OPT         =    -O2 -fprofile-arcs -ftest-coverage
+ERR         =    -Wall
+INC_PATH    =    -I. -I..
+LIB_PATH    =    -L..
+LD_PATH     =     ..
+
+#---------------------------------------------------------
+CC          =     gcc
+RM          =    rm -f
+CHECK_LIBS  =    -lcheck
+LIBS        =    -l$(TGT_NAME)
+# NOTE: UNIT_TEST enables the static-function test case in stuff.c
+CC_FLAGS    =     $(INC_PATH) $(OPT) $(ERR) -DUNIT_TEST
+# NOTE: check libs must be enclosed by --whole-archive directives
+LD_FLAGS    =    $(LIB_PATH) -Wl,--whole-archive \
+                 $(LIBS) $(CHECK_LIBS) \
+                 -Wl,--no-whole-archive
+
+#===================================================
+# Test 2 : Actual unit tests against source code
+# NOTE: this cannot link against the library as it incorporates the source code
+TEST2        =    test_$(TGT_NAME0)
+TEST2_SRC    =     $(TEST2).c \
+                   $(TGT_SRC)
+TEST2_FLAGS  =
+
+TESTS        =    $(TEST1) $(TEST2)
+
+# ...
+
+$(TEST2): $(TEST2_SRC)
+	$(CC) $(CC_FLAGS) $(LD_FLAGS) $(TEST2_FLAGS) -o $@ $^
+#==============================================================
+
+# Test 1 : The first unit test will be a simple one that ensures the library links with no errors
+
+TEST1        =     test_$(TGT_NAME1).c
+TEST1_SRC    =    test_link.c
+TEST1_FLAGS  =    -l$(TGT_NAME)
+
+#TESTS        =    $(TEST1)
+
+# ...
+
+$(TEST1): $(TEST1_SRC)
+	$(CC) $(CC_FLAGS) $(LD_FLAGS) $(TEST1_FLAGS) -o $@ $^
+
+#---------------------------------------------------------- Targets
+all: $(TESTS)
+.PHONY: all clean check
+
+
+clean:
+	$(RM) $(TESTS) *.gcno *.gcda
+
+check:
+	@for t in $(TESTS); do                          \
+		 LD_LIBRARY_PATH='$(LD_PATH)' ./$$t;     \
+	 done
+	
+
+
+#========================================================
+
+
+#==========================================================
+
