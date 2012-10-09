@@ -1,4 +1,18 @@
+****the project with the following directory structure:***
 
+*.Folder
+    makefile
+    src
+      prog.c
+      prog.h
+    tests
+      test_linck.c
+      test_prog.c
+      makefile
+    check-0.9.8
+
+
+=======================================================================
 src folder
          contains :
 prog.c   : very simple C code tha do calculations on double numbers  (the reason of picking very simple one bcs this my first time in makefile)
