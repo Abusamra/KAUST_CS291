@@ -1,6 +1,0 @@
-#ifndef STUFF_H
-#define SUFF_H
-
-double do_prog( double i );
-
-#endif
