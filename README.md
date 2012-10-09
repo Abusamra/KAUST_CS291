@@ -1,7 +1,7 @@
 
 src folder
          contains :
-prog.c   : very simple C code tha do calculations on double numbers
+prog.c   : very simple C code tha do calculations on double numbers  (the reason of picking very simple one bcs this my first time in makefile)
 prog.h
 
 tests folder 
