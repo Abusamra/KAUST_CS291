@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<testsuites xmlns="http://check.sourceforge.net/ns">
+  <datetime>2012-10-05 13:48:27</datetime>
+  <suite>
+    <title>S1</title>
+    <test result="success">
+      <path>.</path>
+      <fn>ex_xml_output.c:10</fn>
+      <id>test_pass</id>
+      <iteration>0</iteration>
+      <description>Core</description>
+      <message>Passed</message>
+    </test>
+    <test result="failure">
+      <path>.</path>
+      <fn>ex_xml_output.c:16</fn>
+      <id>test_fail</id>
+      <iteration>0</iteration>
+      <description>Core</description>
+      <message>Failure</message>
+    </test>
+    <test result="error">
+      <path>.</path>
+      <fn>ex_xml_output.c:20</fn>
+      <id>test_exit</id>
+      <iteration>0</iteration>
+      <description>Core</description>
+      <message>Early exit with return value 1</message>
+    </test>
+  </suite>
+  <suite>
+    <title>S2</title>
+    <test result="success">
+      <path>.</path>
+      <fn>ex_xml_output.c:28</fn>
+      <id>test_pass2</id>
+      <iteration>0</iteration>
+      <description>Core</description>
+      <message>Passed</message>
+    </test>
+    <test result="failure">
+      <path>.</path>
+      <fn>ex_xml_output.c:34</fn>
+      <id>test_loop</id>
+      <iteration>0</iteration>
+      <description>Core</description>
+      <message>Iteration 0 failed</message>
+    </test>
+    <test result="success">
+      <path>.</path>
+      <fn>ex_xml_output.c:34</fn>
+      <id>test_loop</id>
+      <iteration>1</iteration>
+      <description>Core</description>
+      <message>Passed</message>
+    </test>
+    <test result="failure">
+      <path>.</path>
+      <fn>ex_xml_output.c:34</fn>
+      <id>test_loop</id>
+      <iteration>2</iteration>
+      <description>Core</description>
+      <message>Iteration 2 failed</message>
+    </test>
+  </suite>
+  <duration>0.000000</duration>
+</testsuites>

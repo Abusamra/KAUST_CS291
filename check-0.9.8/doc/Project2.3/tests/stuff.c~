@@ -1,0 +1,12 @@
+#include <math.h>
+#include "stuff.h"
+
+static double step1( double i ) { return i * i; }
+static double step2( double i ) { return i + i; }
+static double step3( double i ) { return pow( i, i ); }
+
+double do_stuff( double i ) { return step3( step2( step1( i ) ) ); }
+
+
+// ================================================================= 
+
